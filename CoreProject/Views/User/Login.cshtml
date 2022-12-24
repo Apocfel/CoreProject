@@ -1,0 +1,22 @@
+﻿@model User
+@*@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor*@
+
+
+
+	<section class="h-100">
+	<div class="container h-100">
+		<div class="row justify-content-md-center h-100">
+			<div class="card-wrapper">
+				<div class="card fat">
+					<div class="card-body">
+						<h4 class="card-title">Авторизация</h4>
+						<span class="text-success">@ViewBag.USER_CREATED</span>
+						<partial name="_LoginFormPartial" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+@*<label for="remember" class="custom-control-label">Запомнить меня</label>*@

@@ -1,0 +1,37 @@
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@{
+    HttpContextAccessor.HttpContext.Session.TryGetValue("currentLogin", out var login);
+    var loginDisplay = System.Text.Encoding.Default.GetString(login);
+}
+
+<div class="modal modal-tour position-static d-block bg-secondary py-5" tabindex="-1" role="dialog" id="modalTour">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content rounded-4 shadow">
+            <div class="modal-body p-5">
+                <h2 class="fw-bold mb-0">Админ панель</h2>
+
+                <ul class="d-grid gap-4 my-5 list-unstyled">
+                    <li class="d-flex gap-4 mb-2">
+                        <div>
+                            <h5 class="mb-0">Текущий логин</h5>
+                            @loginDisplay
+                        </div>
+                    </li>
+                    <li class="d-flex gap-4 mb-2">
+                        <div>
+                            <h5 class="mb-0">Дополнительная информация</h5>
+                            Placeholder
+                        </div>
+                    </li>
+                    <li class="d-flex gap-4 mb-2">
+                       <div>
+                            <h5 class="mb-0">Placeholder</h5>
+                            Placeholder
+                        </div>
+                    </li>
+                </ul>
+                <a asp-action="Index" asp-controller="Home" class="btn btn-lg btn-primary mt-5 w-100" data-bs-dismiss="modal">Вернуться на главную</a>
+            </div>
+        </div>
+    </div>
+</div>

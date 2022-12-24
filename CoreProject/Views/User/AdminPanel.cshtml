@@ -1,0 +1,11 @@
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@{
+    HttpContextAccessor.HttpContext.Session.TryGetValue("admin", out var admin);
+    bool isAdmin = false;
+    if (admin != null)
+        if (System.Text.Encoding.Default.GetString(admin) == "true")
+            isAdmin = true;
+}
+@if (isAdmin){
+        <partial name="_AdminPanelPartial" />
+}

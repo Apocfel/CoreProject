@@ -1,0 +1,19 @@
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@{
+    HttpContextAccessor.HttpContext.Session.TryGetValue("logged", out var logged);
+    bool isLogged = false;
+    if (logged != null)
+        if (System.Text.Encoding.Default.GetString(logged) == "true")
+            isLogged = true;
+}
+@if (isLogged)
+{
+    <a class="btn btn-outline-primary me-2" asp-area="" asp-page="">Личный кабинет</a>
+    <a class="btn btn-danger" asp-controller="User" asp-action="Logout">Выйти</a>
+}
+else
+{
+    @*<button type="button" class="btn btn-outline-primary me-2"></button>*@
+    <a class="btn btn-outline-primary me-2" asp-controller="User" asp-action="Login">Войти</a>
+    <a class="btn btn-primary" asp-controller="User" asp-action="Register">Регистрация</a>
+}
